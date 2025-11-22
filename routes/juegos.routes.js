@@ -17,5 +17,7 @@ router.patch(
   uploadJuegoImage.single("imagenPortada"),
   controller.updateJuego
 );
+router.post("/:juegoId/reviews", controller.postReviewJuego);
+router.patch("/:reviewId/reviews", controller.updateReview);
 
 export default router;

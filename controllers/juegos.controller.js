@@ -94,14 +94,26 @@ export const updateJuego = async (req, res) => {
   }
 };
 
-export const updateReviewJuego = async (req, res) => {
+export const postReviewJuego = async (req, res) => {
   try {
-    const id = req.params.id;
+    const { juegoId } = req.params;
+    const reviewData = req.body;
+    reviewData.juegoId = juegoId;
+    const newReview = await service.postReviewJuego(reviewData);
+    res.status(201).json(newReview);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Error al agregar la review" });
+  }
+};
 
-    // Los datos que llegan del front (parcial o completos)
-    const newData = req.body;
+export const updateReview = async (req, res) => {
+  try {
+    const { reviewId } = req.params; // ← ID DE LA REVIEW
 
-    const reviewUpdated = await service.updateReview(id, newData);
+    const newData = req.body; // Datos dinámicos enviados por el front
+
+    const reviewUpdated = await service.updateReview(reviewId, newData);
 
     if (!reviewUpdated) {
       return res.status(404).json({ error: "Review no encontrada" });
