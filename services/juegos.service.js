@@ -16,3 +16,10 @@ export const postJuego = async (juegoData) => {
 export const getReviewsJuego = async (juegoId) => {
   return await JuegosReviews.find({ juegoId });
 };
+
+export const updateJuego = async (id, data) => {
+  return await Juegos.findByIdAndUpdate(id, data, {
+    new: true, // retorna el documento actualizado
+    runValidators: true, // respeta validaciones del schema
+  });
+};
