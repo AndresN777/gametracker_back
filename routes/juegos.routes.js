@@ -5,6 +5,7 @@ import { uploadJuegoImage } from "../services/upload.service.js";
 const router = Router();
 
 router.get("/", controller.getJuegos);
+router.get("/filtrar", controller.filtrarJuegos);
 router.post(
   "/",
   uploadJuegoImage.single("imagenPortada"),

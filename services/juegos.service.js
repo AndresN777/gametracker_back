@@ -47,3 +47,30 @@ export const deleteReview = async (reviewId) => {
 export const getReviewJuegoById = async (reviewId) => {
   return await JuegosReviews.findById(reviewId);
 };
+
+export const filtrarJuegos = async (filtros) => {
+  const query = {};
+
+  // FILTRO POR TÍTULO → búsqueda parcial (case-insensitive)
+  if (filtros.titulo) {
+    query.titulo = { $regex: filtros.titulo, $options: "i" };
+  }
+
+  // FILTRO POR GÉNERO
+  if (filtros.genero) {
+    query.genero = filtros.genero;
+  }
+
+  // FILTRO POR PLATAFORMA
+  if (filtros.plataforma) {
+    query.plataforma = filtros.plataforma;
+  }
+
+  // FILTRO POR COMPLETADO (true/false)
+  if (filtros.completado !== undefined) {
+    query.completado = filtros.completado === "true";
+  }
+
+  // Si no mandan nada → devuelve todos
+  return await Juegos.find(query);
+};

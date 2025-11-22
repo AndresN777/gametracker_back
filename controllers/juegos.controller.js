@@ -184,3 +184,16 @@ export const getReviewJuegoById = async (req, res) => {
     res.status(500).json({ error: "Error en getReviewJuegoById" });
   }
 };
+
+export const filtrarJuegos = async (req, res) => {
+  try {
+    const filtros = req.query; // ← lo que el front envía por query
+
+    const juegos = await service.filtrarJuegos(filtros);
+
+    res.status(200).json(juegos);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Error al filtrar juegos" });
+  }
+};
