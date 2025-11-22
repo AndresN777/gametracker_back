@@ -1,0 +1,43 @@
+# ----------------------------------------
+# Node
+# ----------------------------------------
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+package-lock.json
+
+# ----------------------------------------
+# Archivos de entorno (credenciales)
+# ----------------------------------------
+.env
+.env.local
+.env.*.local
+
+# ----------------------------------------
+# Sistema / Editor
+# ----------------------------------------
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# ----------------------------------------
+# Carpeta donde se guardarán imágenes o uploads
+# (ajústala al nombre real que usarás)
+# ----------------------------------------
+uploads/
+public/uploads/
+imagenes/
+images/
+
+# ----------------------------------------
+# Archivos temporales
+# ----------------------------------------
+*.log
+*.tmp
+*.cache
+dist/
+build/
+coverage/
