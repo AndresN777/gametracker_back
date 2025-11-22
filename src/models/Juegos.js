@@ -8,7 +8,7 @@ const juegosSchema = new mongoose.Schema({
     required: true,
     enum: ["PC", "PlayStation", "Xbox", "Nintendo", "Mobile"],
   },
-  añoLanzamiento: {
+  anioLanzamiento: {
     type: Number,
     required: true,
     validate: {
@@ -20,7 +20,6 @@ const juegosSchema = new mongoose.Schema({
   imagenPortada: { type: String, required: true }, // URL de la imagen
   descripcion: { type: String },
   completado: { type: Boolean, default: false },
-  fechaCreacion: { type: Date },
 });
 export const Juegos = mongoose.model("Juegos", juegosSchema);
 
