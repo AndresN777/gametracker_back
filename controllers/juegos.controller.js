@@ -125,3 +125,33 @@ export const updateReview = async (req, res) => {
     res.status(500).json({ error: "Error al actualizar la review" });
   }
 };
+
+export const deleteJuego = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const juegoActual = await service.getJuegoById(id);
+    if (!juegoActual) {
+      return res.status(404).json({ error: "Juego no encontrado" });
+    }
+
+    // ruta de la imagen vieja
+    const oldImagePath = path.join(
+      process.cwd(),
+      "uploads",
+      "juegos",
+      juegoActual.imagenPortada
+    );
+
+    // eliminar la imagen vieja si existe
+    if (fs.existsSync(oldImagePath)) {
+      fs.unlinkSync(oldImagePath);
+    }
+
+    await service.deleteJuego(id);
+
+    res.status(200).json({ message: "Juego eliminado correctamente" });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Error al eliminar el juego" });
+  }
+};

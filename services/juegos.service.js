@@ -35,3 +35,7 @@ export const updateReview = async (reviewId, data) => {
     runValidators: true,
   });
 };
+
+export const deleteJuego = async (id) => {
+  return await Juegos.findByIdAndDelete(id);
+};
