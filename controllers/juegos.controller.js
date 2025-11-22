@@ -93,3 +93,23 @@ export const updateJuego = async (req, res) => {
     res.status(500).json({ error: "Error al actualizar el juego" });
   }
 };
+
+export const updateReviewJuego = async (req, res) => {
+  try {
+    const id = req.params.id;
+
+    // Los datos que llegan del front (parcial o completos)
+    const newData = req.body;
+
+    const reviewUpdated = await service.updateReview(id, newData);
+
+    if (!reviewUpdated) {
+      return res.status(404).json({ error: "Review no encontrada" });
+    }
+
+    res.status(200).json(reviewUpdated);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Error al actualizar la review" });
+  }
+};
