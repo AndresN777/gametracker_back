@@ -11,7 +11,11 @@ router.post(
   controller.postJuego
 );
 router.get("/:id", controller.getJuegoById);
-
 router.get("/:juegoId/reviews", controller.getReviewsJuego);
+router.patch(
+  "/:id",
+  uploadJuegoImage.single("imagenPortada"),
+  controller.updateJuego
+);
 
 export default router;
