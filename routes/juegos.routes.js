@@ -19,5 +19,6 @@ router.patch(
 );
 router.post("/:juegoId/reviews", controller.postReviewJuego);
 router.patch("/:reviewId/reviews", controller.updateReview);
+router.delete("/:id", controller.deleteJuego);
 
 export default router;
