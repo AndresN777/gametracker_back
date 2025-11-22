@@ -155,3 +155,32 @@ export const deleteJuego = async (req, res) => {
     res.status(500).json({ error: "Error al eliminar el juego" });
   }
 };
+
+export const deleteReview = async (req, res) => {
+  try {
+    const { reviewId } = req.params;
+    const reviewDeleted = await service.deleteReview(reviewId);
+    if (!reviewDeleted) {
+      return res.status(404).json({ error: "Review no encontrada" });
+    }
+
+    res.status(200).json({ message: "Review eliminada correctamente" });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Error al eliminar la review" });
+  }
+};
+
+export const getReviewJuegoById = async (req, res) => {
+  try {
+    const { reviewId } = req.params;
+    const review = await service.getReviewJuegoById(reviewId);
+    if (!review) {
+      return res.status(404).json({ error: "Review no encontrada" });
+    }
+    res.json(review);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Error en getReviewJuegoById" });
+  }
+};

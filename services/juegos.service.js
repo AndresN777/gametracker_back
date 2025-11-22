@@ -39,3 +39,11 @@ export const updateReview = async (reviewId, data) => {
 export const deleteJuego = async (id) => {
   return await Juegos.findByIdAndDelete(id);
 };
+
+export const deleteReview = async (reviewId) => {
+  return await JuegosReviews.findByIdAndDelete(reviewId);
+};
+
+export const getReviewJuegoById = async (reviewId) => {
+  return await JuegosReviews.findById(reviewId);
+};

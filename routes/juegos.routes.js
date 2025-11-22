@@ -21,5 +21,6 @@ router.post("/:juegoId/reviews", controller.postReviewJuego);
 router.patch("/:reviewId/reviews", controller.updateReview);
 router.delete("/:id", controller.deleteJuego);
 router.delete("/:reviewId/reviews", controller.deleteReview);
+router.get("/:reviewId/review", controller.getReviewJuegoById);
 
 export default router;
